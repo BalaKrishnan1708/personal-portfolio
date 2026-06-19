@@ -14,11 +14,13 @@ document.addEventListener('DOMContentLoaded', () => {
   let stars = [];
   const starCount = 150;
   let shootingStars = [];
+  let nebulae = [];
   
   function resizeCanvas() {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
     initStars();
+    initNebulae();
   }
 
   function initStars() {
@@ -156,6 +158,84 @@ document.addEventListener('DOMContentLoaded', () => {
       ctx.arc(meteor.x, meteor.y, 1.2, 0, Math.PI * 2);
       ctx.fill();
       ctx.shadowBlur = 0; // Reset
+    }
+  }
+
+  function initNebulae() {
+    // Generate beautiful soft gaseous space dust nebulae
+    nebulae = [
+      {
+        x: canvas.width * 0.25,
+        y: canvas.height * 0.3,
+        r: Math.min(canvas.width, canvas.height) * 0.35,
+        color: 'rgba(109, 7, 26, 0.07)', // Deep maroon dust
+        vx: 0.05,
+        vy: 0.03
+      },
+      {
+        x: canvas.width * 0.75,
+        y: canvas.height * 0.7,
+        r: Math.min(canvas.width, canvas.height) * 0.45,
+        color: 'rgba(212, 175, 55, 0.04)', // Glowing gold dust
+        vx: -0.03,
+        vy: 0.05
+      },
+      {
+        x: canvas.width * 0.5,
+        y: canvas.height * 0.5,
+        r: Math.min(canvas.width, canvas.height) * 0.28,
+        color: 'rgba(109, 7, 26, 0.05)', // Secondary maroon dust
+        vx: 0.02,
+        vy: -0.04
+      }
+    ];
+  }
+
+  function drawNebulae() {
+    for (let n of nebulae) {
+      n.x += n.vx;
+      n.y += n.vy;
+
+      // Wrap around screen edges
+      if (n.x < -n.r) n.x = canvas.width + n.r;
+      if (n.x > canvas.width + n.r) n.x = -n.r;
+      if (n.y < -n.r) n.y = canvas.height + n.r;
+      if (n.y > canvas.height + n.r) n.y = -n.r;
+
+      // Draw gas cloud with radial gradient
+      let grad = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, n.r);
+      grad.addColorStop(0, n.color);
+      grad.addColorStop(0.5, n.color.replace('0.07', '0.02').replace('0.05', '0.01').replace('0.04', '0.01'));
+      grad.addColorStop(1, 'rgba(4, 8, 17, 0)');
+
+      ctx.fillStyle = grad;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, n.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+
+  function drawConstellations() {
+    ctx.lineWidth = 0.5;
+    for (let i = 0; i < stars.length; i++) {
+      for (let j = i + 1; j < stars.length; j++) {
+        let s1 = stars[i];
+        let s2 = stars[j];
+        
+        // Connect only somewhat brighter/larger stars to keep it clean and cosmic
+        if (s1.size > 0.85 && s2.size > 0.85) {
+          let dist = Math.hypot(s1.x - s2.x, s1.y - s2.y);
+          if (dist < 80) {
+            // Faint lines relative to closeness and star twinkle
+            let alpha = (1 - dist / 80) * 0.07 * Math.min(s1.alpha, s2.alpha);
+            ctx.strokeStyle = `rgba(232, 217, 181, ${alpha})`;
+            ctx.beginPath();
+            ctx.moveTo(s1.x, s1.y);
+            ctx.lineTo(s2.x, s2.y);
+            ctx.stroke();
+          }
+        }
+      }
     }
   }
 
