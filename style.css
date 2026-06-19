@@ -1856,3 +1856,23 @@ footer {
     gap: 1.5rem;
   }
 }
+
+/* See More / See Less Buttons Container */
+.see-more-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 3.5rem;
+  width: 100%;
+  position: relative;
+  z-index: 10;
+}
+
+/* Certificate Social Event Link styling */
+.cert-social-link {
+  transition: var(--transition-fast);
+}
+
+.cert-social-link:hover {
+  color: var(--color-gold-hover) !important;
+  transform: translateX(3px);
+}
