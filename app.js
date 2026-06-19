@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let stars = [];
   const starCount = 100;
+  let shootingStars = [];
   
   function resizeCanvas() {
     canvas.width = window.innerWidth;
@@ -72,7 +73,84 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     ctx.shadowBlur = 0; // Reset shadow blur
+
+    // Draw shooting stars on top of background stars
+    drawShootingStars();
+
     requestAnimationFrame(drawStars);
+  }
+
+  function spawnShootingStar() {
+    // Occasional spawn (roll 0.6% chance per frame, max 2 active at once)
+    if (shootingStars.length < 2 && Math.random() < 0.006) {
+      shootingStars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * (canvas.height * 0.4),
+        len: Math.random() * 90 + 50,
+        speed: Math.random() * 8 + 7,
+        dx: Math.random() * 0.8 + 0.6, // travel horizontal multiplier (left-to-right)
+        dy: Math.random() * 0.4 + 0.3, // travel vertical multiplier (downwards)
+        opacity: 0,
+        maxOpacity: Math.random() * 0.6 + 0.3,
+        state: 'fading-in' // 'fading-in', 'fading-out', 'dead'
+      });
+    }
+  }
+
+  function drawShootingStars() {
+    spawnShootingStar();
+
+    for (let i = shootingStars.length - 1; i >= 0; i--) {
+      let meteor = shootingStars[i];
+
+      // Update state
+      if (meteor.state === 'fading-in') {
+        meteor.opacity += 0.07;
+        if (meteor.opacity >= meteor.maxOpacity) {
+          meteor.opacity = meteor.maxOpacity;
+          meteor.state = 'fading-out';
+        }
+      } else if (meteor.state === 'fading-out') {
+        meteor.opacity -= 0.02;
+        if (meteor.opacity <= 0) {
+          meteor.state = 'dead';
+        }
+      }
+
+      if (meteor.state === 'dead' || meteor.x < 0 || meteor.x > canvas.width || meteor.y > canvas.height) {
+        shootingStars.splice(i, 1);
+        continue;
+      }
+
+      // Move meteor
+      meteor.x += meteor.speed * meteor.dx;
+      meteor.y += meteor.speed * meteor.dy;
+
+      // Draw meteor trail
+      const tailX = meteor.x - meteor.len * meteor.dx;
+      const tailY = meteor.y - meteor.len * meteor.dy;
+
+      const grad = ctx.createLinearGradient(meteor.x, meteor.y, tailX, tailY);
+      grad.addColorStop(0, `rgba(212, 175, 55, ${meteor.opacity})`); // Gold head
+      grad.addColorStop(0.2, `rgba(232, 217, 181, ${meteor.opacity * 0.8})`); // Sandal body
+      grad.addColorStop(1, 'rgba(232, 217, 181, 0)'); // Transparent tail
+
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.8;
+      ctx.beginPath();
+      ctx.moveTo(meteor.x, meteor.y);
+      ctx.lineTo(tailX, tailY);
+      ctx.stroke();
+
+      // Tiny head glow
+      ctx.shadowBlur = 6;
+      ctx.shadowColor = '#D4AF37';
+      ctx.fillStyle = `rgba(255, 255, 255, ${meteor.opacity})`;
+      ctx.beginPath();
+      ctx.arc(meteor.x, meteor.y, 1.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0; // Reset
+    }
   }
 
   window.addEventListener('resize', resizeCanvas);
