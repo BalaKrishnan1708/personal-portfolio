@@ -1,0 +1,5 @@
+Place your certificate image files here:
+- cert_starting_biz.png (Santa Clara University: Starting a Business)
+- cert_growing_biz.png (Santa Clara University: Growing a Business)
+- cert_managing_biz.png (Santa Clara University: Managing a Business)
+- cert_hp_growth.png (HP LIFE: Growth Engine for Your Business)
