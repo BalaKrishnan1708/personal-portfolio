@@ -619,9 +619,31 @@ nav a:hover::after, nav a.active::after {
 .timeline-date {
   color: var(--color-gold);
   font-family: var(--font-display);
-  font-size: 0.9rem;
-  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1px;
   display: block;
+}
+
+/* Desktop absolute positioning to opposite side of the timeline center line */
+@media (min-width: 901px) {
+  .timeline-item.left .timeline-date {
+    position: absolute;
+    left: calc(100% + 3rem);
+    right: auto;
+    text-align: left;
+    top: 2.2rem;
+    width: calc(100% - 6rem);
+  }
+
+  .timeline-item.right .timeline-date {
+    position: absolute;
+    right: calc(100% + 3rem);
+    left: auto;
+    text-align: right;
+    top: 2.2rem;
+    width: calc(100% - 6rem);
+  }
 }
 
 .timeline-role {
@@ -1767,6 +1789,14 @@ footer {
   
   .timeline-item.right {
     left: 0;
+  }
+
+  .timeline-date {
+    position: static !important;
+    width: auto !important;
+    text-align: left !important;
+    margin-bottom: 0.8rem;
+    padding-left: 0.2rem;
   }
   
   .timeline-item::after {
