@@ -14,8 +14,8 @@
   --bg-deep-blue: #070f22;
   --color-gold: #D4AF37;
   --color-gold-hover: #F3E5AB;
-  --color-maroon: #D4AF37; /* Replaced maroon with gold */
-  --color-maroon-hover: #F3E5AB; /* Replaced maroon hover with gold hover */
+  --color-maroon: #6D071A;
+  --color-maroon-hover: #8F122B;
   --color-sandal: #E8D9B5;
   --color-sandal-muted: rgba(232, 217, 181, 0.75);
   --color-white: #F5F5F5;
@@ -29,7 +29,7 @@
   
   --border-gold-subtle: 1px solid rgba(212, 175, 55, 0.15);
   --border-gold-medium: 1px solid rgba(212, 175, 55, 0.3);
-  --shadow-maroon-glow: 0 10px 30px rgba(212, 175, 55, 0.15);
+  --shadow-maroon-glow: 0 10px 30px rgba(109, 7, 26, 0.25);
   --shadow-gold-glow: 0 10px 30px rgba(212, 175, 55, 0.1);
   --glass-bg: rgba(7, 15, 34, 0.7);
   --glass-blur: blur(16px);
@@ -133,7 +133,7 @@ section {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.08) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(109, 7, 26, 0.15) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -277,16 +277,16 @@ nav a:hover::after, nav a.active::after {
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, var(--color-maroon) 0%, #8c6b12 100%);
+  background: linear-gradient(135deg, var(--color-maroon) 0%, #4a0310 100%);
   color: var(--color-sandal);
   border: 1px solid var(--color-gold);
   box-shadow: var(--shadow-maroon-glow);
 }
 
 .btn-primary:hover {
-  background: linear-gradient(135deg, var(--color-maroon-hover) 0%, #a8841c 100%);
+  background: linear-gradient(135deg, var(--color-maroon-hover) 0%, #5d0617 100%);
   transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(212, 175, 55, 0.25);
+  box-shadow: 0 15px 35px rgba(109, 7, 26, 0.4);
 }
 
 .btn-secondary {
@@ -296,7 +296,7 @@ nav a:hover::after, nav a.active::after {
 }
 
 .btn-secondary:hover {
-  background: rgba(212, 175, 55, 0.08);
+  background: rgba(109, 7, 26, 0.15);
   color: var(--color-gold-hover);
   transform: translateY(-3px);
   box-shadow: var(--shadow-gold-glow);
@@ -447,7 +447,7 @@ nav a:hover::after, nav a.active::after {
 }
 
 .stat-card {
-  background: rgba(212, 175, 55, 0.03);
+  background: rgba(109, 7, 26, 0.08);
   border: var(--border-gold-subtle);
   padding: 2rem;
   text-align: center;
@@ -476,7 +476,7 @@ nav a:hover::after, nav a.active::after {
 
 .stat-card:hover {
   transform: translateY(-8px);
-  background: rgba(212, 175, 55, 0.08);
+  background: rgba(109, 7, 26, 0.15);
   box-shadow: var(--shadow-gold-glow);
   border: var(--border-gold-medium);
 }
@@ -689,7 +689,7 @@ nav a:hover::after, nav a.active::after {
 
 .timeline-skills span {
   font-size: 0.75rem;
-  background: rgba(212, 175, 55, 0.08);
+  background: rgba(109, 7, 26, 0.15);
   border: var(--border-gold-subtle);
   color: var(--color-sandal-muted);
   padding: 0.2rem 0.6rem;
@@ -777,7 +777,7 @@ nav a:hover::after, nav a.active::after {
 }
 
 .research-spotlight {
-  background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, rgba(7, 15, 34, 0.8) 100%);
+  background: linear-gradient(135deg, rgba(109, 7, 26, 0.2) 0%, rgba(7, 15, 34, 0.8) 100%);
   border: 1px solid var(--color-gold);
   border-radius: 8px;
   padding: 3rem;
@@ -902,7 +902,7 @@ nav a:hover::after, nav a.active::after {
 .project-tech span {
   font-size: 0.75rem;
   color: var(--color-sandal);
-  background: rgba(212, 175, 55, 0.15);
+  background: rgba(109, 7, 26, 0.25);
   border: 1px solid rgba(212, 175, 55, 0.15);
   padding: 0.2rem 0.7rem;
   border-radius: 3px;
@@ -975,7 +975,7 @@ nav a:hover::after, nav a.active::after {
 }
 
 .radar-poly {
-  fill: rgba(212, 175, 55, 0.15);
+  fill: rgba(109, 7, 26, 0.35);
   stroke: var(--color-gold);
   stroke-width: 2.5;
   filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
@@ -1077,7 +1077,7 @@ nav a:hover::after, nav a.active::after {
 
 .cert-image-space {
   height: 180px;
-  background: linear-gradient(135deg, rgba(7, 15, 34, 0.9) 0%, rgba(212, 175, 55, 0.25) 100%);
+  background: linear-gradient(135deg, rgba(7, 15, 34, 0.9) 0%, rgba(109, 7, 26, 0.4) 100%);
   border-bottom: var(--border-gold-subtle);
   display: flex;
   justify-content: center;
@@ -1238,7 +1238,7 @@ nav a:hover::after, nav a.active::after {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(135deg, var(--bg-deep-blue) 0%, rgba(212, 175, 55, 0.03) 100%);
+  background: linear-gradient(135deg, var(--bg-deep-blue) 0%, rgba(109, 7, 26, 0.1) 100%);
 }
 
 .modal-info-pane h3 {
@@ -1492,7 +1492,7 @@ nav a:hover::after, nav a.active::after {
 .contact-icon {
   width: 50px;
   height: 50px;
-  background: rgba(212, 175, 55, 0.05);
+  background: rgba(109, 7, 26, 0.2);
   border: var(--border-gold-subtle);
   color: var(--color-gold);
   display: flex;
@@ -1925,4 +1925,20 @@ footer {
 .cert-social-link:hover {
   color: var(--color-gold-hover) !important;
   transform: translateX(3px);
+}
+
+/* Custom highlight underlines for main centerpiece sections */
+nav a[href="#experience"]::after,
+nav a[href="#projects"]::after {
+  height: 2.5px !important;
+  background: linear-gradient(90deg, var(--color-maroon), var(--color-gold)) !important;
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
+}
+
+#experience h2::after,
+#projects h2::after {
+  height: 3px;
+  width: 120px;
+  background: linear-gradient(90deg, var(--color-maroon) 0%, var(--color-gold) 50%, var(--color-maroon) 100%);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
 }

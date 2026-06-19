@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const ctx = canvas.getContext('2d');
 
   let stars = [];
-  const starCount = 100;
+  const starCount = 150;
   let shootingStars = [];
   
   function resizeCanvas() {
@@ -40,6 +40,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = '#040811';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    // Draw background gas nebulae
+    drawNebulae();
+
+    // Draw faint constellation lines
+    drawConstellations();
 
     for (let star of stars) {
       // Glow effect for larger stars
