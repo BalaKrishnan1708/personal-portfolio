@@ -366,10 +366,9 @@ nav a:hover::after, nav a.active::after {
   gap: 0.5rem;
 }
 
-.hero-roles span:not(:last-child)::after {
-  content: '•';
+.role-separator {
   color: var(--color-gold);
-  margin-left: 1.2rem;
+  user-select: none;
 }
 
 .hero-description {
@@ -2221,7 +2220,7 @@ footer {
 }
 
 @media (max-width: 600px) {
-  .hero-roles span:not(:last-child)::after {
+  .role-separator {
     display: none;
   }
   

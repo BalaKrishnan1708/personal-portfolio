@@ -313,6 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const target = entry.target;
         const val = parseInt(target.getAttribute('data-val'));
         let count = 0;
+        target.innerText = '0'; // Progressive fallback: reset to 0 to start animation
         const speed = val > 50 ? 2 : 50; // Quicker counting for larger numbers
         
         const updateCount = () => {
@@ -321,7 +322,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (count < val) {
             setTimeout(updateCount, speed);
           } else {
-            target.innerText = val + (val === 8 || val === 5 || val === 4 ? '+' : '');
+            target.innerText = val + (val === 7 || val === 5 || val === 4 ? '+' : '');
           }
         };
         
@@ -694,6 +695,33 @@ document.addEventListener('DOMContentLoaded', () => {
       item.style.setProperty('--mouse-y', `${y}px`);
     });
   });
+
+  // --- 9. Decrypt and Inject Contact Info to Prevent Email/Phone Scraping ---
+  const emailText = document.getElementById('email-text');
+  const phoneText = document.getElementById('phone-text');
+  const emailBtns = document.querySelectorAll('.obfuscated-email-btn');
+  const phoneBtns = document.querySelectorAll('.obfuscated-phone-btn');
+  
+  if (emailText || phoneText || emailBtns.length > 0 || phoneBtns.length > 0) {
+    const emailUser = "bala.ramyaram";
+    const emailDomain = "gmail.com";
+    const emailAddress = `${emailUser}@${emailDomain}`;
+    const phoneNum = "+919444543801";
+    const phoneDisplay = "+91 94445 43801";
+    
+    if (emailText) {
+      emailText.innerHTML = `<a href="mailto:${emailAddress}">${emailAddress}</a>`;
+    }
+    if (phoneText) {
+      phoneText.innerHTML = `<a href="tel:${phoneNum}">${phoneDisplay}</a>`;
+    }
+    emailBtns.forEach(btn => {
+      btn.setAttribute('href', `mailto:${emailAddress}`);
+    });
+    phoneBtns.forEach(btn => {
+      btn.setAttribute('href', `tel:${phoneNum}`);
+    });
+  }
 
   // Contact form submission logic removed as form has been replaced by direct contact list.
 });
