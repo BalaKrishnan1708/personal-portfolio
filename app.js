@@ -705,7 +705,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Configuration: Set this to your Google Apps Script Web App URL for direct background submissions.
       // If left empty or as placeholder, it will fall back to a clean mailto client draft.
-      const CONTACT_BACKEND_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+      const CONTACT_BACKEND_URL = 'https://script.google.com/macros/s/AKfycbxj4waF6sp-IthmCLX5myu1nhi1ZBvC-_MxCRi6gQruboiE6sfyzvXfTqnUVCs0zb2b/exec';
 
       if (CONTACT_BACKEND_URL && CONTACT_BACKEND_URL.startsWith('http')) {
         // Option A: Send in the background using Google Apps Script Web App
