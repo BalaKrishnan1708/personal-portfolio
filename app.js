@@ -446,26 +446,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize visibility
   applyProjectsVisibility();
 
-  // Expand / Collapse details on click
-  timelineContents.forEach(content => {
-    content.addEventListener('click', (e) => {
-      // Prevent expand if clicking links or button tags directly
-      if (e.target.tagName === 'A' || e.target.closest('a')) return;
-      
-      const isExpanded = content.classList.contains('expanded');
-      
-      // Close other timeline details
-      timelineContents.forEach(c => {
-        c.classList.remove('expanded');
-        c.querySelector('.timeline-expand-btn').innerHTML = 'Read Details <i class="fa-solid fa-chevron-down"></i>';
-      });
 
-      if (!isExpanded) {
-        content.classList.add('expanded');
-        content.querySelector('.timeline-expand-btn').innerHTML = 'Close <i class="fa-solid fa-chevron-down"></i>';
-      }
-    });
-  });
 
 
   // --- 5. Interactive Skills Matrix & SVG Radar Chart ---

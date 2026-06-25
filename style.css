@@ -710,7 +710,11 @@ nav a:hover::after, nav a.active::after {
 .timeline-desc {
   font-size: 0.9rem;
   color: var(--color-white-muted);
-  display: none; /* Expand on click */
+  display: block;
+}
+
+.timeline-expand-btn {
+  display: none !important;
 }
 
 .timeline-desc ul {
@@ -911,13 +915,20 @@ nav a:hover::after, nav a.active::after {
   gap: 1rem;
 }
 
-.project-links a {
-  font-size: 1.2rem;
-  color: var(--color-sandal-muted);
+.project-link {
+  font-size: 0.85rem;
+  color: var(--color-gold);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: 600;
+  transition: var(--transition-fast);
 }
 
-.project-links a:hover {
-  color: var(--color-gold);
+.project-link:hover {
+  color: var(--color-gold-hover) !important;
+  transform: translateY(-2px);
 }
 
 .project-card h3 {
