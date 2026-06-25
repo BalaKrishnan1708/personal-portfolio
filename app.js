@@ -683,7 +683,7 @@ document.addEventListener('DOMContentLoaded', () => {
   applyCertsVisibility();
 
 
-  // Contact form submission logic with professional email formatting
+  // Contact form submission logic
   const contactForm = document.getElementById('contactForm');
   const formStatus = document.getElementById('formStatus');
 
@@ -699,33 +699,73 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!name || !email || !subject || !message) {
         formStatus.textContent = "Please fill in all fields.";
         formStatus.className = "form-status error";
+        formStatus.style.display = "block";
         return;
       }
 
-      // Generate a professional proper email body
-      const recipient = "bala.ramyaram@gmail.com";
-      const emailSubject = encodeURIComponent(subject);
-      
-      const emailBodyText = `${message}\n\nBest regards,\n${name}`;
-      const emailBody = encodeURIComponent(emailBodyText);
+      // Configuration: Set this to your Google Apps Script Web App URL for direct background submissions.
+      // If left empty or as placeholder, it will fall back to a clean mailto client draft.
+      const CONTACT_BACKEND_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 
-      // Construct mailto link
-      const mailtoUrl = `mailto:${recipient}?subject=${emailSubject}&body=${emailBody}`;
+      if (CONTACT_BACKEND_URL && CONTACT_BACKEND_URL.startsWith('http')) {
+        // Option A: Send in the background using Google Apps Script Web App
+        formStatus.textContent = "Sending message...";
+        formStatus.className = "form-status success";
+        formStatus.style.display = "block";
 
-      // Open user's email client
-      window.location.href = mailtoUrl;
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('subject', subject);
+        formData.append('message', message);
 
-      // Update form status with success feedback
-      formStatus.textContent = "Opening your mail client... Thank you!";
-      formStatus.className = "form-status success";
-      formStatus.style.display = "block";
+        fetch(CONTACT_BACKEND_URL, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        })
+        .then(response => {
+          if (response.ok) {
+            return response.json();
+          }
+          throw new Error('Network response was not ok.');
+        })
+        .then(data => {
+          formStatus.textContent = "Message sent successfully! Thank you.";
+          formStatus.className = "form-status success";
+          contactForm.reset();
+          
+          setTimeout(() => {
+            formStatus.style.display = "none";
+            formStatus.className = "form-status";
+          }, 5000);
+        })
+        .catch(error => {
+          console.error('Error submitting form:', error);
+          formStatus.textContent = "Error sending message. Please try again later or email directly.";
+          formStatus.className = "form-status error";
+        });
+      } else {
+        // Option B: Fallback to opening a clean, proper mailto client draft
+        const recipient = "bala.ramyaram@gmail.com";
+        const emailSubject = encodeURIComponent(subject);
+        const emailBody = encodeURIComponent(`${message}\n\nBest regards,\n${name}`);
+        const mailtoUrl = `mailto:${recipient}?subject=${emailSubject}&body=${emailBody}`;
 
-      // Reset form after delay
-      setTimeout(() => {
-        contactForm.reset();
-        formStatus.style.display = "none";
-        formStatus.className = "form-status";
-      }, 5000);
+        window.location.href = mailtoUrl;
+
+        formStatus.textContent = "Opening your mail client... Please click send in your mail app.";
+        formStatus.className = "form-status success";
+        formStatus.style.display = "block";
+
+        setTimeout(() => {
+          contactForm.reset();
+          formStatus.style.display = "none";
+          formStatus.className = "form-status";
+        }, 5000);
+      }
     });
   }
 });
