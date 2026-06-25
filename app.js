@@ -446,10 +446,32 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize visibility
   applyProjectsVisibility();
 
+  // Expand / Collapse details on click
+  timelineContents.forEach(content => {
+    content.addEventListener('click', (e) => {
+      // Prevent expand if clicking links or button tags directly
+      if (e.target.tagName === 'A' || e.target.closest('a')) return;
+      
+      const isExpanded = content.classList.contains('expanded');
+      
+      // Close other timeline details
+      timelineContents.forEach(c => {
+        c.classList.remove('expanded');
+        const expandBtn = c.querySelector('.timeline-expand-btn');
+        if (expandBtn) {
+          expandBtn.innerHTML = 'Read More <i class="fa-solid fa-chevron-down"></i>';
+        }
+      });
 
-
-
-  // --- 5. Interactive Skills Matrix & SVG Radar Chart ---
+      if (!isExpanded) {
+        content.classList.add('expanded');
+        const expandBtn = content.querySelector('.timeline-expand-btn');
+        if (expandBtn) {
+          expandBtn.innerHTML = 'Close <i class="fa-solid fa-chevron-down"></i>';
+        }
+      }
+    });
+  });
   const radarLabels = document.querySelectorAll('.radar-axis-label');
   const radarPoints = document.querySelectorAll('.radar-point');
   const skillsTabBtns = document.querySelectorAll('.skills-tab-btn');

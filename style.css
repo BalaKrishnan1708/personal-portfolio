@@ -344,8 +344,9 @@ nav a:hover::after, nav a.active::after {
   color: var(--color-sandal);
   text-shadow: 0 0 20px rgba(232, 217, 181, 0.15);
   margin-bottom: 1.5rem;
-  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+  font-size: clamp(1.8rem, 5.2vw, 5.5rem);
   text-align: left;
+  white-space: nowrap;
 }
 
 .hero-roles {
@@ -710,11 +711,7 @@ nav a:hover::after, nav a.active::after {
 .timeline-desc {
   font-size: 0.9rem;
   color: var(--color-white-muted);
-  display: block;
-}
-
-.timeline-expand-btn {
-  display: none !important;
+  display: none; /* Expand on click */
 }
 
 .timeline-desc ul {
@@ -757,6 +754,7 @@ nav a:hover::after, nav a.active::after {
   display: inline-flex;
   align-items: center;
   gap: 0.3rem;
+  cursor: pointer;
 }
 
 .timeline-expand-btn i {
