@@ -721,18 +721,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         fetch(CONTACT_BACKEND_URL, {
           method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
+          mode: 'no-cors',
+          body: formData
         })
         .then(response => {
-          if (response.ok) {
-            return response.json();
-          }
-          throw new Error('Network response was not ok.');
-        })
-        .then(data => {
           formStatus.textContent = "Message sent successfully! Thank you.";
           formStatus.className = "form-status success";
           contactForm.reset();
