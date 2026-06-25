@@ -304,18 +304,29 @@ nav a:hover::after, nav a.active::after {
 
 /* 1. Hero Section */
 #hero {
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
-  text-align: center;
-  padding: 0 1.5rem;
+  justify-content: center;
+  padding: 80px 1.5rem 40px 1.5rem;
   position: relative;
+  overflow: hidden;
+}
+
+.hero-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 10;
 }
 
 .hero-content {
-  z-index: 10;
+  flex: 1.2;
+  text-align: left;
   opacity: 0;
   transform: translateY(30px);
   animation: fadeInUp 1.2s forwards cubic-bezier(0.16, 1, 0.3, 1);
@@ -333,13 +344,14 @@ nav a:hover::after, nav a.active::after {
   color: var(--color-sandal);
   text-shadow: 0 0 20px rgba(232, 217, 181, 0.15);
   margin-bottom: 1.5rem;
-  font-size: clamp(2.8rem, 7vw, 5.5rem);
+  font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+  text-align: left;
 }
 
 .hero-roles {
   display: flex;
-  gap: 1.5rem;
-  justify-content: center;
+  gap: 1.2rem;
+  justify-content: flex-start;
   margin-bottom: 2rem;
   flex-wrap: wrap;
   font-family: var(--font-display);
@@ -356,20 +368,56 @@ nav a:hover::after, nav a.active::after {
 .hero-roles span:not(:last-child)::after {
   content: '•';
   color: var(--color-gold);
-  margin-left: 1.5rem;
+  margin-left: 1.2rem;
 }
 
 .hero-description {
   font-size: clamp(1rem, 2vw, 1.25rem);
   max-width: 650px;
-  margin: 0 auto 3rem auto;
+  margin: 0 0 3rem 0;
   color: var(--color-white-muted);
+  text-align: left;
 }
 
 .hero-btns {
   display: flex;
   gap: 1.5rem;
+  justify-content: flex-start;
+}
+
+.hero-image-wrapper {
+  flex: 0.8;
+  display: flex;
   justify-content: center;
+  align-items: center;
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1.2s 0.2s forwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.hero-image {
+  width: min(320px, 40vw);
+  height: min(320px, 40vw);
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--color-gold);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.25);
+  z-index: 2;
+  transition: var(--transition-smooth);
+}
+
+.hero-image:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.45);
+}
+
+.hero-image-glow {
+  position: absolute;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(4, 8, 17, 0) 70%);
+  z-index: 1;
 }
 
 /* 2. Who Am I */
@@ -910,6 +958,45 @@ nav a:hover::after, nav a.active::after {
 }
 
 /* 5. Interactive Skills Matrix */
+.skills-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto 3rem auto;
+  flex-wrap: wrap;
+  max-width: 800px;
+}
+
+.skills-tab-btn {
+  background: var(--glass-bg);
+  border: var(--border-gold-subtle);
+  color: var(--color-sandal-muted);
+  padding: 0.7rem 1.4rem;
+  border-radius: 30px;
+  cursor: pointer;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: var(--transition-smooth);
+}
+
+.skills-tab-btn:hover {
+  border: var(--border-gold-medium);
+  color: var(--color-gold-hover);
+  background: rgba(109, 7, 26, 0.15);
+  transform: translateY(-2px);
+}
+
+.skills-tab-btn.active {
+  background: var(--color-gold);
+  color: #040811;
+  border-color: var(--color-gold);
+  box-shadow: var(--shadow-gold-glow);
+}
+
 .skills-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -949,7 +1036,7 @@ nav a:hover::after, nav a.active::after {
 .radar-axis-label {
   fill: var(--color-sandal);
   font-family: var(--font-display);
-  font-size: 9px; /* Shrunk for legibility and spacing */
+  font-size: 13px; /* Increased from 9px for trackpads */
   letter-spacing: 0.5px;
   cursor: pointer;
   transition: var(--transition-fast);
@@ -993,14 +1080,14 @@ nav a:hover::after, nav a.active::after {
 .radar-point {
   fill: var(--color-sandal);
   stroke: var(--color-maroon);
-  stroke-width: 2;
+  stroke-width: 2.5;
   cursor: pointer;
   transition: var(--transition-fast);
+  transform-origin: center;
 }
 
 .radar-point:hover {
   fill: var(--color-gold);
-  transform: scale(1.4);
 }
 
 .skills-info-panel {
@@ -1377,7 +1464,9 @@ nav a:hover::after, nav a.active::after {
   border-radius: 12px;
   overflow: hidden;
   padding: 0;
-  height: 180px; /* Fixed height for compact Spotify embed */
+  display: flex;
+  flex-direction: column;
+  height: 232px; /* Increased from 180px to fit direct link button */
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   transition: var(--transition-smooth);
 }
@@ -1389,8 +1478,34 @@ nav a:hover::after, nav a.active::after {
 
 .podcast-embed-card iframe {
   width: 100%;
-  height: 100%;
+  height: 152px; /* Fixed height for Spotify player */
   border: none;
+}
+
+.podcast-direct-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 80px;
+  background: rgba(29, 185, 84, 0.15); /* Transparent Spotify green */
+  color: var(--color-white) !important;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-top: 1px solid rgba(212, 175, 55, 0.1);
+  transition: var(--transition-smooth);
+}
+
+.podcast-direct-link:hover {
+  background: #1DB954; /* Solid Spotify Green */
+  color: #000 !important;
+}
+
+.podcast-direct-link i {
+  font-size: 1rem;
 }
 
 .beyond-grid {
@@ -1733,6 +1848,39 @@ footer {
 }
 
 @media (max-width: 900px) {
+  .hero-container {
+    flex-direction: column-reverse;
+    text-align: center;
+    gap: 3rem;
+    padding-top: 5rem;
+  }
+  
+  .hero-content {
+    text-align: center;
+  }
+  
+  .hero-title {
+    text-align: center;
+  }
+  
+  .hero-roles {
+    justify-content: center;
+  }
+  
+  .hero-description {
+    margin: 0 auto 3rem auto;
+    text-align: center;
+  }
+  
+  .hero-btns {
+    justify-content: center;
+  }
+  
+  .hero-image {
+    width: min(250px, 60vw);
+    height: min(250px, 60vw);
+  }
+
   header {
     padding: 1rem 1.5rem;
   }
@@ -1928,6 +2076,24 @@ footer {
 }
 
 /* Custom highlight underlines for main centerpiece sections */
+.radar-axis-label {
+  fill: var(--color-sandal);
+  font-family: var(--font-display);
+  font-size: 13px; /* Increased from 9px for trackpads */
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.radar-axis-label[data-axis="dev"],
+.radar-axis-label[data-axis="biz"] {
+  text-anchor: middle;
+}
+
+.radar-axis-label[data-axis="ai"] {
+  text-anchor: start;
+}
+
 nav a[href="#experience"]::after,
 nav a[href="#projects"]::after {
   height: 2.5px !important;

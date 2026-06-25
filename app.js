@@ -471,6 +471,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // --- 5. Interactive Skills Matrix & SVG Radar Chart ---
   const radarLabels = document.querySelectorAll('.radar-axis-label');
   const radarPoints = document.querySelectorAll('.radar-point');
+  const skillsTabBtns = document.querySelectorAll('.skills-tab-btn');
   const panelTitle = document.getElementById('panel-title');
   const panelDesc = document.getElementById('panel-desc');
   const panelList = document.getElementById('panel-list');
@@ -548,6 +549,26 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
+    // Active tab button styling
+    skillsTabBtns.forEach(btn => {
+      if (btn.getAttribute('data-axis') === category) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
+    });
+
+    // Active point styling
+    radarPoints.forEach(pt => {
+      if (pt.getAttribute('data-axis') === category) {
+        pt.setAttribute('r', '11');
+        pt.style.fill = 'var(--color-gold)';
+      } else {
+        pt.setAttribute('r', '8');
+        pt.style.fill = 'var(--color-sandal)';
+      }
+    });
+
     // Fade animation transition
     const panel = document.getElementById('skills-panel');
     panel.style.opacity = '0';
@@ -582,6 +603,14 @@ document.addEventListener('DOMContentLoaded', () => {
   radarPoints.forEach(point => {
     point.addEventListener('click', () => {
       const axis = point.getAttribute('data-axis');
+      updateSkillsPanel(axis);
+    });
+  });
+
+  // Bind clicks to tab buttons
+  skillsTabBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const axis = btn.getAttribute('data-axis');
       updateSkillsPanel(axis);
     });
   });
