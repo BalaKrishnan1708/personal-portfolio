@@ -683,5 +683,63 @@ document.addEventListener('DOMContentLoaded', () => {
   applyCertsVisibility();
 
 
-  // Contact form submission logic removed as form has been replaced by direct contact list.
+  // Contact form submission logic with professional email formatting
+  const contactForm = document.getElementById('contactForm');
+  const formStatus = document.getElementById('formStatus');
+
+  if (contactForm && formStatus) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('senderEmail').value.trim();
+      const subject = document.getElementById('subject').value.trim();
+      const message = document.getElementById('message').value.trim();
+
+      if (!name || !email || !subject || !message) {
+        formStatus.textContent = "Please fill in all fields.";
+        formStatus.className = "form-status error";
+        return;
+      }
+
+      // Generate a professional email body template
+      const recipient = "bala.ramyaram@gmail.com";
+      const emailSubject = encodeURIComponent(`${subject} - Portfolio Inquiry`);
+      
+      const emailBodyText = `Dear Balakrishnan R,
+
+You have received a new professional inquiry from your Portfolio Website.
+
+Sender Details:
+------------------------------------------
+Name: ${name}
+Email: ${email}
+------------------------------------------
+
+Message:
+${message}
+
+Best regards,
+${name}`;
+
+      const emailBody = encodeURIComponent(emailBodyText);
+
+      // Construct mailto link
+      const mailtoUrl = `mailto:${recipient}?subject=${emailSubject}&body=${emailBody}`;
+
+      // Open user's email client
+      window.location.href = mailtoUrl;
+
+      // Update form status with success feedback
+      formStatus.textContent = "Opening your email client to send message... Thank you!";
+      formStatus.className = "form-status success";
+
+      // Reset form after delay
+      setTimeout(() => {
+        contactForm.reset();
+        formStatus.style.display = "none";
+        formStatus.className = "form-status";
+      }, 5000);
+    });
+  }
 });

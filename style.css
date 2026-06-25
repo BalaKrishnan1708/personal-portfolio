@@ -1691,29 +1691,31 @@ nav a:hover::after, nav a.active::after {
 
 /* 9. Contact Section */
 .contact-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  max-width: 650px;
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  max-width: 1050px;
   margin: 0 auto;
+  align-items: start;
+  text-align: left;
 }
 
 .contact-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   width: 100%;
 }
 
 .contact-info h3 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
+  font-size: 2.2rem;
+  margin-bottom: 1.5rem;
 }
 
 .contact-info p {
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   font-size: 1.05rem;
+  line-height: 1.6;
 }
 
 .contact-details {
@@ -1721,9 +1723,9 @@ nav a:hover::after, nav a.active::after {
   flex-direction: column;
   align-items: flex-start;
   gap: 2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   width: fit-content;
-  margin: 0 auto 3rem auto;
+  margin: 0 0 2.5rem 0;
 }
 
 .contact-detail-row {
@@ -1763,7 +1765,7 @@ nav a:hover::after, nav a.active::after {
 .social-links {
   display: flex;
   gap: 1.2rem;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 .social-btn {
@@ -2134,7 +2136,20 @@ footer {
   
   .contact-wrapper {
     grid-template-columns: 1fr;
-    gap: 4rem;
+    gap: 3rem;
+    text-align: center;
+  }
+  
+  .contact-info {
+    align-items: center;
+  }
+  
+  .contact-details {
+    margin: 0 auto 2.5rem auto;
+  }
+  
+  .social-links {
+    justify-content: center;
   }
   
   .modal-body {
