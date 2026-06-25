@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const skillsData = {
     dev: {
       title: "Software Engineering",
-      desc: "Developing responsive frontends, backend APIs, and database structures through professional internships and client projects.",
+      desc: "Architecting responsive, high-performance web systems and digital products across internships, startups, and client agreements.",
       skills: [
         "MERN Stack (MongoDB, React, Node)",
         "Angular / Vue.js",
@@ -497,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     ai: {
       title: "AI & Data Science",
-      desc: "Analyzing datasets, training machine learning classifiers, and processing remote sensing satellite data for predictive applications.",
+      desc: "Analyzing data streams, training machine learning classifiers, and processing remote sensing satellite indices.",
       skills: [
         "Machine Learning / Scikit-Learn",
         "Pandas & NumPy Arrays",
@@ -511,7 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     biz: {
       title: "Entrepreneurship & Strategy",
-      desc: "Understanding startup methodologies, preparing pitch decks, and studying business operations through certified courses.",
+      desc: "Driving startup methodologies, creating pitch decks, and outlining business operations verified by global programs.",
       skills: [
         "Starting a Business (SCU)",
         "Growing a Business (SCU)",
@@ -525,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     comm: {
       title: "Communication & Media",
-      desc: "Hosting educational podcasts, anchoring college festivals, and presenting technical projects to diverse audiences.",
+      desc: "Connecting tech and communities. Hosting podcasts, anchoring cultural festivals, and speaking at national conventions.",
       skills: [
         "Event Hosting / Emcee (Highways)",
         "Podcasting (SVCE Science Hour)",
@@ -683,81 +683,5 @@ document.addEventListener('DOMContentLoaded', () => {
   applyCertsVisibility();
 
 
-  // Contact form submission logic
-  const contactForm = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
-
-  if (contactForm && formStatus) {
-    contactForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('senderEmail').value.trim();
-      const subject = document.getElementById('subject').value.trim();
-      const message = document.getElementById('message').value.trim();
-
-      if (!name || !email || !subject || !message) {
-        formStatus.textContent = "Please fill in all fields.";
-        formStatus.className = "form-status error";
-        formStatus.style.display = "block";
-        return;
-      }
-
-      // Configuration: Set this to your Google Apps Script Web App URL for direct background submissions.
-      // If left empty or as placeholder, it will fall back to a clean mailto client draft.
-      const CONTACT_BACKEND_URL = 'https://script.google.com/macros/s/AKfycbxj4waF6sp-IthmCLX5myu1nhi1ZBvC-_MxCRi6gQruboiE6sfyzvXfTqnUVCs0zb2b/exec';
-
-      if (CONTACT_BACKEND_URL && CONTACT_BACKEND_URL.startsWith('http')) {
-        // Option A: Send in the background using Google Apps Script Web App
-        formStatus.textContent = "Sending message...";
-        formStatus.className = "form-status success";
-        formStatus.style.display = "block";
-
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('email', email);
-        formData.append('subject', subject);
-        formData.append('message', message);
-
-        fetch(CONTACT_BACKEND_URL, {
-          method: 'POST',
-          mode: 'no-cors',
-          body: formData
-        })
-        .then(response => {
-          formStatus.textContent = "Message sent successfully! Thank you.";
-          formStatus.className = "form-status success";
-          contactForm.reset();
-          
-          setTimeout(() => {
-            formStatus.style.display = "none";
-            formStatus.className = "form-status";
-          }, 5000);
-        })
-        .catch(error => {
-          console.error('Error submitting form:', error);
-          formStatus.textContent = "Error sending message. Please try again later or email directly.";
-          formStatus.className = "form-status error";
-        });
-      } else {
-        // Option B: Fallback to opening a clean, proper mailto client draft
-        const recipient = "bala.ramyaram@gmail.com";
-        const emailSubject = encodeURIComponent(subject);
-        const emailBody = encodeURIComponent(`${message}\n\nBest regards,\n${name}`);
-        const mailtoUrl = `mailto:${recipient}?subject=${emailSubject}&body=${emailBody}`;
-
-        window.location.href = mailtoUrl;
-
-        formStatus.textContent = "Opening your mail client... Please click send in your mail app.";
-        formStatus.className = "form-status success";
-        formStatus.style.display = "block";
-
-        setTimeout(() => {
-          contactForm.reset();
-          formStatus.style.display = "none";
-          formStatus.className = "form-status";
-        }, 5000);
-      }
-    });
-  }
+  // Contact form submission logic removed as form has been replaced by direct contact list.
 });
