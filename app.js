@@ -483,7 +483,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const skillsData = {
     dev: {
       title: "Software Engineering",
-      desc: "Architecting responsive, high-performance web systems and digital products across internships, startups, and client agreements.",
+      desc: "Developing responsive frontends, backend APIs, and database structures through professional internships and client projects.",
       skills: [
         "MERN Stack (MongoDB, React, Node)",
         "Angular / Vue.js",
@@ -497,7 +497,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     ai: {
       title: "AI & Data Science",
-      desc: "Analyzing data streams, training machine learning classifiers, and processing remote sensing satellite indices.",
+      desc: "Analyzing datasets, training machine learning classifiers, and processing remote sensing satellite data for predictive applications.",
       skills: [
         "Machine Learning / Scikit-Learn",
         "Pandas & NumPy Arrays",
@@ -511,7 +511,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     biz: {
       title: "Entrepreneurship & Strategy",
-      desc: "Driving startup methodologies, creating pitch decks, and outlining business operations verified by global programs.",
+      desc: "Understanding startup methodologies, preparing pitch decks, and studying business operations through certified courses.",
       skills: [
         "Starting a Business (SCU)",
         "Growing a Business (SCU)",
@@ -525,7 +525,7 @@ document.addEventListener('DOMContentLoaded', () => {
     },
     comm: {
       title: "Communication & Media",
-      desc: "Connecting tech and communities. Hosting podcasts, anchoring cultural festivals, and speaking at national conventions.",
+      desc: "Hosting educational podcasts, anchoring college festivals, and presenting technical projects to diverse audiences.",
       skills: [
         "Event Hosting / Emcee (Highways)",
         "Podcasting (SVCE Science Hour)",

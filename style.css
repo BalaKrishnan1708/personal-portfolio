@@ -1434,7 +1434,7 @@ nav a:hover::after, nav a.active::after {
   transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* 8. Beyond Coding (Communicator Hub) */
+/* 8. Beyond Coding (Bento Grid) */
 .beyond-intro {
   text-align: center;
   max-width: 700px;
@@ -1443,129 +1443,250 @@ nav a:hover::after, nav a.active::after {
   color: var(--color-white-muted);
 }
 
-.podcast-section {
-  margin-bottom: 3.5rem;
-}
-
-.podcast-section h3 {
-  font-size: 1.6rem;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-
-.podcast-subtitle {
-  text-align: center;
-  color: var(--color-gold);
-  margin-bottom: 1.5rem;
-  font-size: 0.95rem;
-  font-style: italic;
-}
-
-.podcasts-grid {
+.beyond-bento-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(12, 1fr);
   gap: 2rem;
+  margin-top: 2rem;
 }
 
-.podcast-embed-card {
+.bento-card {
   background: var(--glass-bg);
   border: var(--border-gold-subtle);
   border-radius: 12px;
-  overflow: hidden;
-  padding: 0;
+  padding: 2.2rem;
   display: flex;
   flex-direction: column;
-  height: 232px; /* Increased from 180px to fit direct link button */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  justify-content: space-between;
   transition: var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-.podcast-embed-card:hover {
+.bento-card:hover {
   transform: translateY(-5px);
   border-color: var(--color-gold);
-}
-
-.podcast-embed-card iframe {
-  width: 100%;
-  height: 152px; /* Fixed height for Spotify player */
-  border: none;
-}
-
-.podcast-direct-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  width: 100%;
-  height: 80px;
-  background: rgba(29, 185, 84, 0.15); /* Transparent Spotify green */
-  color: var(--color-white) !important;
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  font-weight: 600;
-  text-decoration: none;
-  border-top: 1px solid rgba(212, 175, 55, 0.1);
-  transition: var(--transition-smooth);
-}
-
-.podcast-direct-link:hover {
-  background: #1DB954; /* Solid Spotify Green */
-  color: #000 !important;
-}
-
-.podcast-direct-link i {
-  font-size: 1rem;
-}
-
-.beyond-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 4rem;
-}
-
-.beyond-column h3 {
-  font-size: 1.4rem;
-  border-bottom: var(--border-gold-subtle);
-  padding-bottom: 0.8rem;
-  margin-bottom: 2rem;
-}
-
-.beyond-list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-}
-
-.beyond-item {
-  background: var(--glass-bg);
-  border: var(--border-gold-subtle);
-  padding: 1.5rem 2rem;
-  border-radius: 6px;
-  transition: var(--transition-smooth);
-}
-
-.beyond-item:hover {
-  border-color: var(--color-gold);
-  transform: translateX(5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
   background: rgba(7, 15, 34, 0.85);
 }
 
-.beyond-item h4 {
-  font-size: 1.1rem;
-  color: var(--color-sandal);
+.bento-emcee {
+  grid-column: span 6;
+}
+
+.bento-pitch {
+  grid-column: span 3;
+}
+
+.bento-hackathon {
+  grid-column: span 3;
+}
+
+.bento-podcast {
+  grid-column: span 12;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.bento-card-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+.bento-card-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.2rem;
+}
+
+.bento-icon-wrapper {
+  width: 48px;
+  height: 48px;
+  background: rgba(109, 7, 26, 0.2);
+  border: var(--border-gold-subtle);
+  color: var(--color-gold);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.bento-badge {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--color-gold);
+  font-weight: 700;
+  letter-spacing: 1px;
+  display: block;
   margin-bottom: 0.3rem;
 }
 
-.beyond-meta {
-  font-size: 0.85rem;
-  color: var(--color-gold);
-  margin-bottom: 0.8rem;
-  font-weight: 600;
+.bento-card-header h3 {
+  font-size: 1.25rem;
+  color: var(--color-white);
+  margin: 0;
+  line-height: 1.3;
 }
 
-.beyond-item p {
-  font-size: 0.9rem;
+.bento-subtitle {
+  font-size: 0.85rem;
+  color: var(--color-sandal-muted);
+  margin: 0.2rem 0 0 0;
+}
+
+.bento-desc {
+  font-size: 0.95rem;
   color: var(--color-white-muted);
+  line-height: 1.6;
+  margin: 0 0 1.5rem 0;
+}
+
+.bento-footer-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  border-top: 1px solid rgba(232, 217, 181, 0.15);
+  padding-top: 1.2rem;
+  margin-top: auto;
+}
+
+.stat-large {
+  font-size: 1.8rem;
+  font-family: var(--font-display);
+  color: var(--color-gold);
+  font-weight: 700;
+}
+
+.stat-desc {
+  font-size: 0.8rem;
+  color: var(--color-white-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Podcast Box Specific styling */
+.bento-podcast-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid rgba(232, 217, 181, 0.15);
+  padding-bottom: 1.5rem;
+  width: 100%;
+}
+
+.podcast-footer {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+.visualizer-container {
+  display: flex;
+  align-items: flex-end;
+  gap: 3px;
+  height: 20px;
+}
+
+.visualizer-bar {
+  width: 3px;
+  height: 100%;
+  background: #1db954;
+  border-radius: 3px;
+  animation: wave-bounce 1s ease-in-out infinite alternate;
+}
+
+.visualizer-bar:nth-child(1) { animation-delay: 0.1s; height: 30%; }
+.visualizer-bar:nth-child(2) { animation-delay: 0.4s; height: 60%; }
+.visualizer-bar:nth-child(3) { animation-delay: 0.2s; height: 90%; }
+.visualizer-bar:nth-child(4) { animation-delay: 0.6s; height: 40%; }
+.visualizer-bar:nth-child(5) { animation-delay: 0.3s; height: 75%; }
+.visualizer-bar:nth-child(6) { animation-delay: 0.5s; height: 50%; }
+
+.visualizer-text {
+  font-size: 0.85rem;
+  color: #1db954;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.podcast-episode-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1.2rem;
+  width: 100%;
+}
+
+.podcast-episode-item {
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  border-radius: 8px;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: var(--transition-smooth);
+  min-height: 140px;
+}
+
+.podcast-episode-item:hover {
+  border-color: #1db954;
+  background: rgba(29, 185, 84, 0.08);
+  transform: translateY(-3px);
+}
+
+.episode-info .episode-number {
+  font-size: 0.75rem;
+  color: var(--color-gold);
+  font-weight: 600;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.episode-info h4 {
+  font-size: 0.95rem;
+  color: var(--color-white);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.podcast-play-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.5rem;
+  background: rgba(29, 185, 84, 0.15);
+  color: #1db954 !important;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-top: 1rem;
+  transition: var(--transition-smooth);
+}
+
+.podcast-play-btn:hover {
+  background: #1db954;
+  color: #000 !important;
+}
+
+@keyframes wave-bounce {
+  0% {
+    height: 20%;
+  }
+  100% {
+    height: 100%;
+  }
 }
 
 /* 9. Contact Section */
@@ -1843,16 +1964,16 @@ footer {
     gap: 2.5rem;
   }
   
-  .beyond-grid {
-    gap: 2.5rem;
+  .beyond-bento-grid {
+    gap: 1.5rem;
   }
   
   .certificates-grid {
     grid-template-columns: repeat(2, 1fr);
   }
   
-  .podcasts-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .podcast-episode-list {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -1992,8 +2113,23 @@ footer {
     padding: 2rem;
   }
   
-  .beyond-grid {
+  .beyond-bento-grid {
     grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .bento-emcee, .bento-pitch, .bento-hackathon, .bento-podcast {
+    grid-column: span 12;
+  }
+  
+  .bento-podcast-top {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+  
+  .podcast-episode-list {
+    grid-template-columns: repeat(2, 1fr);
   }
   
   .contact-wrapper {
@@ -2046,8 +2182,8 @@ footer {
     grid-template-columns: 1fr;
   }
   
-  .podcasts-grid {
-    grid-template-columns: 1fr;
+  .podcast-episode-list {
+    grid-template-columns: 1fr !important;
   }
   
   .languages-grid {
