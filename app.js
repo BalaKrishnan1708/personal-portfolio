@@ -702,26 +702,11 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
 
-      // Generate a professional email body template
+      // Generate a professional proper email body
       const recipient = "bala.ramyaram@gmail.com";
-      const emailSubject = encodeURIComponent(`${subject} - Portfolio Inquiry`);
+      const emailSubject = encodeURIComponent(subject);
       
-      const emailBodyText = `Dear Balakrishnan R,
-
-You have received a new professional inquiry from your Portfolio Website.
-
-Sender Details:
-------------------------------------------
-Name: ${name}
-Email: ${email}
-------------------------------------------
-
-Message:
-${message}
-
-Best regards,
-${name}`;
-
+      const emailBodyText = `${message}\n\nBest regards,\n${name}`;
       const emailBody = encodeURIComponent(emailBodyText);
 
       // Construct mailto link
@@ -731,8 +716,9 @@ ${name}`;
       window.location.href = mailtoUrl;
 
       // Update form status with success feedback
-      formStatus.textContent = "Opening your email client to send message... Thank you!";
+      formStatus.textContent = "Opening your mail client... Thank you!";
       formStatus.className = "form-status success";
+      formStatus.style.display = "block";
 
       // Reset form after delay
       setTimeout(() => {
