@@ -2318,3 +2318,53 @@ nav a[href="#projects"]::after {
   background: linear-gradient(90deg, var(--color-maroon) 0%, var(--color-gold) 50%, var(--color-maroon) 100%);
   box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
 }
+
+/* Logo styling in header */
+.logo {
+  font-family: var(--font-display);
+  color: var(--color-gold);
+  font-size: 1.15rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: var(--transition-fast);
+}
+
+.logo:hover {
+  color: var(--color-gold-hover);
+  text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
+}
+
+/* Hero section social links */
+.hero-socials-list {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.hero-social-link {
+  color: var(--color-white-muted);
+  font-size: 1.3rem;
+  transition: var(--transition-fast);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-social-link:hover {
+  color: var(--color-gold);
+  transform: translateY(-2px);
+}
+
+.hero-social-link img.social-icon-img {
+  height: 1.25rem;
+  width: auto;
+  vertical-align: middle;
+  transition: var(--transition-fast);
+  filter: opacity(0.6);
+}
+
+.hero-social-link:hover img.social-icon-img {
+  filter: opacity(1) drop-shadow(0 0 4px rgba(212, 175, 55, 0.4));
+}
