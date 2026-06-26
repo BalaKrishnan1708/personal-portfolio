@@ -312,6 +312,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (entry.isIntersecting) {
         const target = entry.target;
         const val = parseInt(target.getAttribute('data-val'));
+        const originalText = target.innerText;
+        const hasPlus = originalText.includes('+');
         let count = 0;
         target.innerText = '0'; // Progressive fallback: reset to 0 to start animation
         const speed = val > 50 ? 2 : 50; // Quicker counting for larger numbers
@@ -322,7 +324,7 @@ document.addEventListener('DOMContentLoaded', () => {
           if (count < val) {
             setTimeout(updateCount, speed);
           } else {
-            target.innerText = val + (val === 7 || val === 5 || val === 4 ? '+' : '');
+            target.innerText = val + (hasPlus ? '+' : '');
           }
         };
         
@@ -378,46 +380,18 @@ document.addEventListener('DOMContentLoaded', () => {
     const activeFilterBtn = document.querySelector('.project-filter-btn.active');
     const filter = activeFilterBtn ? activeFilterBtn.getAttribute('data-filter') : 'all';
 
-    if (filter === 'all') {
-      if (projectsSeeMoreContainer) projectsSeeMoreContainer.style.display = 'flex';
-      let visibleCount = 0;
-      projectCards.forEach(card => {
-        if (projectsExpanded || visibleCount < initialProjectsLimit) {
-          card.style.display = 'flex';
-          setTimeout(() => {
-            card.classList.add('show');
-          }, 10);
-          visibleCount++;
-        } else {
-          card.classList.remove('show');
-          card.style.display = 'none';
-        }
-      });
-      
-      // Update button text and icon
-      if (projectsSeeMoreBtn) {
-        if (projectsExpanded) {
-          projectsSeeMoreBtn.innerHTML = 'See Less <i class="fa-solid fa-chevron-up"></i>';
-        } else {
-          projectsSeeMoreBtn.innerHTML = 'See More <i class="fa-solid fa-chevron-down"></i>';
-        }
+    projectCards.forEach(card => {
+      const category = card.getAttribute('data-category');
+      if (filter === 'all' || category === filter) {
+        card.style.display = 'flex';
+        setTimeout(() => {
+          card.classList.add('show');
+        }, 10);
+      } else {
+        card.classList.remove('show');
+        card.style.display = 'none';
       }
-    } else {
-      // If a filter is selected, show all matching cards and hide "See More"
-      if (projectsSeeMoreContainer) projectsSeeMoreContainer.style.display = 'none';
-      projectCards.forEach(card => {
-        const category = card.getAttribute('data-category');
-        if (category === filter) {
-          card.style.display = 'flex';
-          setTimeout(() => {
-            card.classList.add('show');
-          }, 10);
-        } else {
-          card.classList.remove('show');
-          card.style.display = 'none';
-        }
-      });
-    }
+    });
   }
 
   // Filter button clicks
@@ -425,24 +399,9 @@ document.addEventListener('DOMContentLoaded', () => {
     btn.addEventListener('click', () => {
       projFilterBtns.forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      // Reset expanded state when changing filter to keep UX clean
-      projectsExpanded = false;
       applyProjectsVisibility();
     });
   });
-
-  // See More button click
-  if (projectsSeeMoreBtn) {
-    projectsSeeMoreBtn.addEventListener('click', () => {
-      projectsExpanded = !projectsExpanded;
-      applyProjectsVisibility();
-      
-      // If closing, scroll smoothly back to the projects header so user doesn't get lost
-      if (!projectsExpanded) {
-        document.getElementById('projects').scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  }
 
   // Initialize visibility
   applyProjectsVisibility();
@@ -641,47 +600,7 @@ document.addEventListener('DOMContentLoaded', () => {
   langFills.forEach(fill => langObserver.observe(fill));
 
 
-  // --- 6b. Certifications See More ---
-  const certCards = document.querySelectorAll('.certificates-grid .certificate-card');
-  const certsSeeMoreBtn = document.getElementById('certs-see-more-btn');
-  const certsSeeMoreContainer = document.getElementById('certs-see-more-container');
-  
-  let certsExpanded = false;
-  const initialCertsLimit = 8; // Show 8 certificates (2 rows of 4) initially for balance
 
-  function applyCertsVisibility() {
-    let visibleCount = 0;
-    certCards.forEach(card => {
-      if (certsExpanded || visibleCount < initialCertsLimit) {
-        card.style.display = 'flex';
-        visibleCount++;
-      } else {
-        card.style.display = 'none';
-      }
-    });
-
-    if (certsSeeMoreBtn) {
-      if (certsExpanded) {
-        certsSeeMoreBtn.innerHTML = 'See Less <i class="fa-solid fa-chevron-up"></i>';
-      } else {
-        certsSeeMoreBtn.innerHTML = 'See More <i class="fa-solid fa-chevron-down"></i>';
-      }
-    }
-  }
-
-  if (certsSeeMoreBtn) {
-    certsSeeMoreBtn.addEventListener('click', () => {
-      certsExpanded = !certsExpanded;
-      applyCertsVisibility();
-      
-      if (!certsExpanded) {
-        document.getElementById('certificates').scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  }
-
-  // Initialize certificates visibility
-  applyCertsVisibility();
 
 
   // --- 8. Mouse tracker hover effect for Beyond Coding cards ---
