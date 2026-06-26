@@ -603,9 +603,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-  // --- 8. Mouse tracker hover effect for Beyond Coding cards ---
-  const beyondItems = document.querySelectorAll('.beyond-item');
-  beyondItems.forEach(item => {
+  // --- 8. Mouse tracker hover effect for Beyond Coding and Contact cards ---
+  const hoverCards = document.querySelectorAll('.beyond-item, .contact-card');
+  hoverCards.forEach(item => {
     item.addEventListener('mousemove', (e) => {
       const rect = item.getBoundingClientRect();
       const x = e.clientX - rect.left;
