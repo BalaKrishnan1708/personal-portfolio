@@ -10,27 +10,27 @@
 
 /* CSS Variables */
 :root {
-  --bg-dark-navy: #060913;
-  --bg-deep-blue: #0b0f1d;
-  --color-gold: #3b82f6;
-  --color-gold-hover: #60a5fa;
-  --color-maroon: #1e293b;
-  --color-maroon-hover: #334155;
-  --color-sandal: #f1f5f9;
-  --color-sandal-muted: rgba(241, 245, 249, 0.7);
+  --bg-dark-navy: #040811;
+  --bg-deep-blue: #070f22;
+  --color-gold: #D4AF37;
+  --color-gold-hover: #F3E5AB;
+  --color-maroon: #6D071A;
+  --color-maroon-hover: #8F122B;
+  --color-sandal: #E8D9B5;
+  --color-sandal-muted: rgba(232, 217, 181, 0.75);
   --color-white: #F5F5F5;
   --color-white-muted: rgba(245, 245, 245, 0.6);
   
-  --font-display: 'Plus Jakarta Sans', sans-serif;
+  --font-display: 'Cinzel', serif;
   --font-body: 'Plus Jakarta Sans', sans-serif;
   
   --transition-smooth: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-fast: all 0.2s ease;
   
-  --border-gold-subtle: 1px solid rgba(59, 130, 246, 0.15);
-  --border-gold-medium: 1px solid rgba(59, 130, 246, 0.3);
-  --shadow-maroon-glow: 0 10px 30px rgba(30, 41, 59, 0.25);
-  --shadow-gold-glow: 0 10px 30px rgba(59, 130, 246, 0.1);
+  --border-gold-subtle: 1px solid rgba(212, 175, 55, 0.15);
+  --border-gold-medium: 1px solid rgba(212, 175, 55, 0.3);
+  --shadow-maroon-glow: 0 10px 30px rgba(109, 7, 26, 0.25);
+  --shadow-gold-glow: 0 10px 30px rgba(212, 175, 55, 0.1);
   --glass-bg: rgba(7, 15, 34, 0.7);
   --glass-blur: blur(16px);
 }
@@ -133,7 +133,7 @@ section {
   width: 500px;
   height: 500px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(30, 41, 59, 0.15) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(109, 7, 26, 0.15) 0%, transparent 70%);
   pointer-events: none;
   z-index: 0;
 }
@@ -211,7 +211,7 @@ header.scrolled {
 }
 
 .header-socials a:hover img.social-icon-img {
-  filter: opacity(1) drop-shadow(0 0 4px rgba(59, 130, 246, 0.4));
+  filter: opacity(1) drop-shadow(0 0 4px rgba(212, 175, 55, 0.4));
 }
 
 nav ul {
@@ -286,7 +286,7 @@ nav a:hover::after, nav a.active::after {
 .btn-primary:hover {
   background: linear-gradient(135deg, var(--color-maroon-hover) 0%, #5d0617 100%);
   transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(30, 41, 59, 0.4);
+  box-shadow: 0 15px 35px rgba(109, 7, 26, 0.4);
 }
 
 .btn-secondary {
@@ -296,7 +296,7 @@ nav a:hover::after, nav a.active::after {
 }
 
 .btn-secondary:hover {
-  background: rgba(30, 41, 59, 0.15);
+  background: rgba(109, 7, 26, 0.15);
   color: var(--color-gold-hover);
   transform: translateY(-3px);
   box-shadow: var(--shadow-gold-glow);
@@ -402,21 +402,21 @@ nav a:hover::after, nav a.active::after {
   object-fit: cover;
   border-radius: 50%;
   border: 3px solid var(--color-gold);
-  box-shadow: 0 0 30px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 0 30px rgba(212, 175, 55, 0.25);
   z-index: 2;
   transition: var(--transition-smooth);
 }
 
 .hero-image:hover {
   transform: scale(1.04);
-  box-shadow: 0 0 40px rgba(59, 130, 246, 0.45);
+  box-shadow: 0 0 40px rgba(212, 175, 55, 0.45);
 }
 
 .hero-image-glow {
   position: absolute;
   width: 120%;
   height: 120%;
-  background: radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, rgba(4, 8, 17, 0) 70%);
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.15) 0%, rgba(4, 8, 17, 0) 70%);
   z-index: 1;
 }
 
@@ -495,7 +495,7 @@ nav a:hover::after, nav a.active::after {
 }
 
 .stat-card {
-  background: rgba(30, 41, 59, 0.08);
+  background: rgba(109, 7, 26, 0.08);
   border: var(--border-gold-subtle);
   padding: 2rem;
   text-align: center;
@@ -524,7 +524,7 @@ nav a:hover::after, nav a.active::after {
 
 .stat-card:hover {
   transform: translateY(-8px);
-  background: rgba(30, 41, 59, 0.15);
+  background: rgba(109, 7, 26, 0.15);
   box-shadow: var(--shadow-gold-glow);
   border: var(--border-gold-medium);
 }
@@ -591,7 +591,7 @@ nav a:hover::after, nav a.active::after {
   content: '';
   position: absolute;
   width: 2px;
-  background: linear-gradient(180deg, var(--color-gold), rgba(59, 130, 246, 0.05));
+  background: linear-gradient(180deg, var(--color-gold), rgba(212, 175, 55, 0.05));
   top: 0;
   bottom: 0;
   left: 50%;
@@ -737,7 +737,7 @@ nav a:hover::after, nav a.active::after {
 
 .timeline-skills span {
   font-size: 0.75rem;
-  background: rgba(30, 41, 59, 0.15);
+  background: rgba(109, 7, 26, 0.15);
   border: var(--border-gold-subtle);
   color: var(--color-sandal-muted);
   padding: 0.2rem 0.6rem;
@@ -826,7 +826,7 @@ nav a:hover::after, nav a.active::after {
 }
 
 .research-spotlight {
-  background: linear-gradient(135deg, rgba(30, 41, 59, 0.2) 0%, rgba(7, 15, 34, 0.8) 100%);
+  background: linear-gradient(135deg, rgba(109, 7, 26, 0.2) 0%, rgba(7, 15, 34, 0.8) 100%);
   border: 1px solid var(--color-gold);
   border-radius: 8px;
   padding: 3rem;
@@ -958,8 +958,8 @@ nav a:hover::after, nav a.active::after {
 .project-tech span {
   font-size: 0.75rem;
   color: var(--color-sandal);
-  background: rgba(30, 41, 59, 0.25);
-  border: 1px solid rgba(59, 130, 246, 0.15);
+  background: rgba(109, 7, 26, 0.25);
+  border: 1px solid rgba(212, 175, 55, 0.15);
   padding: 0.2rem 0.7rem;
   border-radius: 3px;
   font-weight: 600;
@@ -994,7 +994,7 @@ nav a:hover::after, nav a.active::after {
 .skills-tab-btn:hover {
   border: var(--border-gold-medium);
   color: var(--color-gold-hover);
-  background: rgba(30, 41, 59, 0.15);
+  background: rgba(109, 7, 26, 0.15);
   transform: translateY(-2px);
 }
 
@@ -1037,7 +1037,7 @@ nav a:hover::after, nav a.active::after {
 }
 
 .radar-axis-line {
-  stroke: rgba(59, 130, 246, 0.2);
+  stroke: rgba(212, 175, 55, 0.2);
   stroke-width: 1;
 }
 
@@ -1066,14 +1066,14 @@ nav a:hover::after, nav a.active::after {
 .radar-axis-label:hover, .radar-axis-label.active {
   fill: var(--color-gold-hover);
   font-weight: 700;
-  filter: drop-shadow(0 0 5px rgba(59, 130, 246, 0.5));
+  filter: drop-shadow(0 0 5px rgba(212, 175, 55, 0.5));
 }
 
 .radar-poly {
-  fill: rgba(30, 41, 59, 0.35);
+  fill: rgba(109, 7, 26, 0.35);
   stroke: var(--color-gold);
   stroke-width: 2.5;
-  filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.3));
+  filter: drop-shadow(0 0 10px rgba(212, 175, 55, 0.3));
   transition: var(--transition-smooth);
 }
 
@@ -1172,7 +1172,7 @@ nav a:hover::after, nav a.active::after {
 
 .cert-image-space {
   height: 180px;
-  background: linear-gradient(135deg, rgba(7, 15, 34, 0.9) 0%, rgba(30, 41, 59, 0.4) 100%);
+  background: linear-gradient(135deg, rgba(7, 15, 34, 0.9) 0%, rgba(109, 7, 26, 0.4) 100%);
   border-bottom: var(--border-gold-subtle);
   display: flex;
   justify-content: center;
@@ -1333,7 +1333,7 @@ nav a:hover::after, nav a.active::after {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  background: linear-gradient(135deg, var(--bg-deep-blue) 0%, rgba(30, 41, 59, 0.1) 100%);
+  background: linear-gradient(135deg, var(--bg-deep-blue) 0%, rgba(109, 7, 26, 0.1) 100%);
 }
 
 .modal-info-pane h3 {
@@ -1393,7 +1393,7 @@ nav a:hover::after, nav a.active::after {
   margin-bottom: 1.2rem;
   display: inline-block;
   box-shadow: 0 5px 12px rgba(0, 0, 0, 0.4);
-  border: 1px solid rgba(59, 130, 246, 0.25);
+  border: 1px solid rgba(212, 175, 55, 0.25);
   vertical-align: middle;
   transition: var(--transition-fast);
 }
@@ -1401,7 +1401,7 @@ nav a:hover::after, nav a.active::after {
 .language-card:hover .lang-flag {
   transform: scale(1.1);
   border-color: var(--color-gold);
-  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+  box-shadow: 0 8px 20px rgba(212, 175, 55, 0.2);
 }
 
 .language-card h4 {
@@ -1484,7 +1484,7 @@ nav a:hover::after, nav a.active::after {
 .bento-icon-wrapper {
   width: 48px;
   height: 48px;
-  background: rgba(30, 41, 59, 0.2);
+  background: rgba(109, 7, 26, 0.2);
   border: var(--border-gold-subtle);
   color: var(--color-gold);
   display: flex;
@@ -1574,7 +1574,7 @@ nav a:hover::after, nav a.active::after {
 
 .podcast-episode-item {
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.1);
   border-radius: 8px;
   padding: 1.2rem;
   display: flex;
@@ -1668,7 +1668,7 @@ nav a:hover::after, nav a.active::after {
 
 .beyond-item {
   background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(59, 130, 246, 0.1);
+  border: 1px solid rgba(212, 175, 55, 0.1);
   padding: 1.8rem;
   border-radius: 12px;
   transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
@@ -1686,7 +1686,7 @@ nav a:hover::after, nav a.active::after {
   left: 0;
   width: 100%;
   height: 100%;
-  background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(59, 130, 246, 0.06), transparent 40%);
+  background: radial-gradient(800px circle at var(--mouse-x, 0) var(--mouse-y, 0), rgba(212, 175, 55, 0.06), transparent 40%);
   z-index: 1;
   pointer-events: none;
   opacity: 0;
@@ -1698,7 +1698,7 @@ nav a:hover::after, nav a.active::after {
 }
 
 .beyond-item:hover {
-  border-color: rgba(59, 130, 246, 0.4);
+  border-color: rgba(212, 175, 55, 0.4);
   transform: translateY(-5px);
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05);
   background: rgba(7, 15, 34, 0.8);
@@ -1714,8 +1714,8 @@ nav a:hover::after, nav a.active::after {
 .beyond-item-icon {
   width: 42px;
   height: 42px;
-  background: rgba(30, 41, 59, 0.2);
-  border: 1px solid rgba(59, 130, 246, 0.15);
+  background: rgba(109, 7, 26, 0.2);
+  border: 1px solid rgba(212, 175, 55, 0.15);
   color: var(--color-gold);
   border-radius: 8px;
   display: flex;
@@ -1807,7 +1807,7 @@ nav a:hover::after, nav a.active::after {
 .contact-icon {
   width: 50px;
   height: 50px;
-  background: rgba(30, 41, 59, 0.2);
+  background: rgba(109, 7, 26, 0.2);
   border: var(--border-gold-subtle);
   color: var(--color-gold);
   display: flex;
@@ -2308,7 +2308,7 @@ nav a[href="#experience"]::after,
 nav a[href="#projects"]::after {
   height: 2.5px !important;
   background: linear-gradient(90deg, var(--color-maroon), var(--color-gold)) !important;
-  box-shadow: 0 0 8px rgba(59, 130, 246, 0.6);
+  box-shadow: 0 0 8px rgba(212, 175, 55, 0.6);
 }
 
 #experience h2::after,
@@ -2316,5 +2316,5 @@ nav a[href="#projects"]::after {
   height: 3px;
   width: 120px;
   background: linear-gradient(90deg, var(--color-maroon) 0%, var(--color-gold) 50%, var(--color-maroon) 100%);
-  box-shadow: 0 0 10px rgba(59, 130, 246, 0.4);
+  box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
 }
