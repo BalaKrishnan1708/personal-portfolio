@@ -167,7 +167,7 @@ header {
   width: 100%;
   padding: 1.5rem 3rem;
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   z-index: 100;
   transition: var(--transition-smooth);
@@ -2319,22 +2319,7 @@ nav a[href="#projects"]::after {
   box-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
 }
 
-/* Logo styling in header */
-.logo {
-  font-family: var(--font-display);
-  color: var(--color-gold);
-  font-size: 1.15rem;
-  font-weight: 700;
-  text-decoration: none;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  transition: var(--transition-fast);
-}
 
-.logo:hover {
-  color: var(--color-gold-hover);
-  text-shadow: 0 0 10px rgba(212, 175, 55, 0.4);
-}
 
 /* Hero section social links */
 .hero-socials-list {
